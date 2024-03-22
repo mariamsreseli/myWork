@@ -21,7 +21,6 @@ if word == reversedWord {
 */
 
 
-
 //2.დაწერეთ ფუნქცია რომელიც გადაცემულ რიცხვების array-ს ააკვარდატებს, დაპრინტავს და დააბრუნებს მნიშვნელობას.
 func squaredNumbers(_ numbers: [Int]) -> [Int] {
     var squaredNumbers = [Int]()
