@@ -9,6 +9,7 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let zodTextField = UITextField()
     
     let someImageView: UIImageView = {
         let theImageView = UIImageView()
@@ -58,7 +59,7 @@ class ViewController: UIViewController {
     
     func stackViewItems() {
         let zodLabel = UILabel()
-        let zodTextField = UITextField()
+        
         
         zodLabel.text = "ზოდიაქოს სახელი"
         
@@ -115,10 +116,15 @@ class ViewController: UIViewController {
     }
     
     @objc func goToDescription() {
+        let signName = zodTextField.text
         let descriptionPg = descriptionViewController()
         navigationController?.pushViewController(descriptionPg, animated: true)
         
+     
+        
     }
+    
+    
     
 }
 

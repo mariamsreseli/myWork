@@ -14,6 +14,7 @@
 		0B439FD02BC6C8C700EB9BE9 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 0B439FCF2BC6C8C700EB9BE9 /* Base */; };
 		0B439FD82BC6F7D300EB9BE9 /* descriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B439FD72BC6F7D300EB9BE9 /* descriptionViewController.swift */; };
 		0B439FFA2BC73D1900EB9BE9 /* opposite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B439FF92BC73D1900EB9BE9 /* opposite.swift */; };
+		0B8F32A22BC804DA006C3AF5 /* zodiac.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B8F32A12BC804DA006C3AF5 /* zodiac.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		0B439FD12BC6C8C700EB9BE9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B439FD72BC6F7D300EB9BE9 /* descriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = descriptionViewController.swift; sourceTree = "<group>"; };
 		0B439FF92BC73D1900EB9BE9 /* opposite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = opposite.swift; sourceTree = "<group>"; };
+		0B8F32A12BC804DA006C3AF5 /* zodiac.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = zodiac.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			children = (
 				0B439FC32BC6C8C500EB9BE9 /* AppDelegate.swift */,
 				0B439FC52BC6C8C500EB9BE9 /* SceneDelegate.swift */,
+				0B8F32A12BC804DA006C3AF5 /* zodiac.swift */,
 				0B439FC72BC6C8C500EB9BE9 /* ViewController.swift */,
 				0B439FD72BC6F7D300EB9BE9 /* descriptionViewController.swift */,
 				0B439FF92BC73D1900EB9BE9 /* opposite.swift */,
@@ -143,6 +146,7 @@
 				0B439FC82BC6C8C500EB9BE9 /* ViewController.swift in Sources */,
 				0B439FFA2BC73D1900EB9BE9 /* opposite.swift in Sources */,
 				0B439FD82BC6F7D300EB9BE9 /* descriptionViewController.swift in Sources */,
+				0B8F32A22BC804DA006C3AF5 /* zodiac.swift in Sources */,
 				0B439FC42BC6C8C500EB9BE9 /* AppDelegate.swift in Sources */,
 				0B439FC62BC6C8C500EB9BE9 /* SceneDelegate.swift in Sources */,
 			);
