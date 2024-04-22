@@ -94,7 +94,7 @@ extension PanicVC: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "imediCell", for: indexPath) as! NewsTableViewCell
-        if let newsItem = news?.list[indexPath.row] {
+        if let newsItem = news?.list[indexPath.row]{
             cell.textLabel?.text = newsItem.title
             cell.textLabel?.numberOfLines = 0
             
