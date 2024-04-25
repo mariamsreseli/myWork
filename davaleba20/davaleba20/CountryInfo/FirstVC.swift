@@ -111,5 +111,7 @@ extension FirstVC: UITableViewDataSource, UITableViewDelegate {
         detVC.flagInfoText = country.flags?.alt
         navigationController?.pushViewController(detVC, animated: true)
     }
+    
+    
 }
 

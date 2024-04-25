@@ -1,8 +1,8 @@
 //
-//  NewTableViewCell.swift
-//  davaleba20
+//  MainPageTVCell.swift
+//  davaleba-21
 //
-//  Created by Mariam Sreseli on 4/21/24.
+//  Created by Mariam Sreseli on 4/25/24.
 //
 
 import UIKit
@@ -32,12 +32,12 @@ class NewTableViewCell: UITableViewCell {
         flagImageView.layer.cornerRadius = 10
         flagImageView.clipsToBounds = true
         
-        contentView.backgroundColor = .systemBackground
+        contentView.backgroundColor = .white
         contentView.layer.cornerRadius = 15
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = UIColor.black.cgColor
         
-        textLabel?.textColor = .label
+        textLabel?.textColor = .black
         textLabel?.font = UIFont.boldSystemFont(ofSize: 17)
         textLabel?.textAlignment = .right
     }
@@ -48,31 +48,14 @@ class NewTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 10, bottom: 5, right: 10))
     }
     
-//    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-//            super.traitCollectionDidChange(previousTraitCollection)
-//            
-//            updateAppearanceForCurrentTraitCollection()
-//        }
-        
-//        private func updateAppearanceForCurrentTraitCollection() {
-//            if self.traitCollection.userInterfaceStyle == .dark {
-//                contentView.backgroundColor = .secondarySystemBackground
-//                textLabel?.textColor = .white
-//            } else {
-//                contentView.backgroundColor = .systemBackground
-//                textLabel?.textColor = .label
-//            }
-//        }
-    
     private func updateAppearanceForUserInterfaceStyle(_ userInterfaceStyle: UIUserInterfaceStyle) {
-            let isDarkMode = userInterfaceStyle == .dark
-            contentView.backgroundColor = isDarkMode ? .secondarySystemBackground : .systemBackground
-            textLabel?.textColor = isDarkMode ? .white : .label
-        }
+        let isDarkMode = userInterfaceStyle == .dark
+        contentView.backgroundColor = isDarkMode ? .secondarySystemBackground : .systemBackground
+        textLabel?.textColor = isDarkMode ? .white : .label
+    }
     
     func setFlagImage(from url: String?) {
         guard let urlString = url, let imageURL = URL(string: urlString) else {
@@ -89,3 +72,4 @@ class NewTableViewCell: UITableViewCell {
         }
     }
 }
+
