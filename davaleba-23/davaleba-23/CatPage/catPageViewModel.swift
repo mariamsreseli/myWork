@@ -40,7 +40,7 @@ class CatPageViewModel {
             
             do {
                 let decoder = JSONDecoder()
-                decoder.keyDecodingStrategy = .convertFromSnakeCase
+                //decoder.keyDecodingStrategy = .convertFromSnakeCase
                 let catFactsResponse = try decoder.decode(CatFactsResponse.self, from: data)
                 self.catFacts = catFactsResponse.data
                 completion(self.catFacts, nil)
