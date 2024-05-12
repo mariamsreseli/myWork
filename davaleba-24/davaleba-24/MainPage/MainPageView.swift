@@ -29,6 +29,7 @@ class MainVC: UIViewController {
         collectionView.register(PhotoCell.self, forCellWithReuseIdentifier: "cell")
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header")
         collectionView.dataSource = self
+        collectionView.delegate = self
         view.addSubview(collectionView)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -56,7 +57,7 @@ class MainVC: UIViewController {
 
 // MARK: - Extensions
 
-extension MainVC: UICollectionViewDataSource {
+extension MainVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel.photos.count
     }
@@ -80,7 +81,8 @@ extension MainVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedPhoto = viewModel.photos[indexPath.item]
         let detailVC = DetailViewController()
-        detailVC.detailsViewModel.selectedPhoto = selectedPhoto
+        detailVC.detailsViewModel = DetailViewModel()
+        detailVC.detailsViewModel?.selectedPhoto = selectedPhoto
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
