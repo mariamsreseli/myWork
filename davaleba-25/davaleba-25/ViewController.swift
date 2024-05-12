@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     var heartButton: UIButton = {
         let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setBackgroundImage(UIImage(systemName: "heart"), for: .normal)
         return button
     }()
     
@@ -59,11 +59,41 @@ class ViewController: UIViewController {
     
     private let pressButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .systemBlue
-        button.setTitle("<3", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 20
-        button.layer.masksToBounds = true
+        button.setBackgroundImage(UIImage(systemName: "play.circle"), for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let forwardButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "forward.fill"), for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let backwardButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "backward.fill"), for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let shuffleButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "shuffle"), for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
+    private let repeatButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(systemName: "repeat"), for: .normal)
+        button.tintColor = .white
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
@@ -71,6 +101,7 @@ class ViewController: UIViewController {
         let progressView = UIProgressView(progressViewStyle: .default)
         progressView.trackTintColor = .gray
         progressView.progressTintColor = .systemBlue
+        progressView.translatesAutoresizingMaskIntoConstraints = false
         return progressView
     }()
     
@@ -83,9 +114,7 @@ class ViewController: UIViewController {
         setupProgressBar()
     }
     
-    
     func addConstraints() {
-        
         view.addSubview(taylorImageView)
         view.addSubview(songLabel)
         view.addSubview(artistLabel)
@@ -95,7 +124,10 @@ class ViewController: UIViewController {
         view.addSubview(heartButton)
         view.addSubview(pressButton)
         view.addSubview(progressView)
-        
+        view.addSubview(backwardButton)
+        view.addSubview(forwardButton)
+        view.addSubview(shuffleButton)
+        view.addSubview(repeatButton)
         
         NSLayoutConstraint.activate([
             taylorImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 110),
@@ -124,11 +156,9 @@ class ViewController: UIViewController {
             iconView.widthAnchor.constraint(equalToConstant: 335),
             iconView.heightAnchor.constraint(equalToConstant: 85)
         ])
-  
-        
     }
+    
     func setupLabels() {
-        
         songLabel.font = UIFont.systemFont(ofSize: 22)
         songLabel.textColor = .white
         songLabel.textAlignment = .center
@@ -141,9 +171,9 @@ class ViewController: UIViewController {
     }
         
     func setupButtons() {
-        homeButton = createButton(imageName: "home", action: #selector(homeButtonTapped))
-        musicButton = createButton(imageName: "music", action: #selector(musicButtonTapped))
-        heartButton = createButton(imageName: "heart", action: #selector(heartButtonTapped))
+        homeButton = createButton(imageName: "house", action: #selector(homeButtonTapped))
+        musicButton = createButton(imageName: "music.note", action: #selector(musicButtonTapped))
+        heartButton = createButton(imageName: "heart.fill", action: #selector(heartButtonTapped))
         
         iconView.addSubview(homeButton)
         iconView.addSubview(musicButton)
@@ -152,61 +182,98 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             homeButton.topAnchor.constraint(equalTo: iconView.topAnchor, constant: 20),
             homeButton.leadingAnchor.constraint(equalTo: iconView.leadingAnchor, constant: 50),
-            homeButton.widthAnchor.constraint(equalToConstant: 30),
-            homeButton.heightAnchor.constraint(equalToConstant: 30),
+            homeButton.widthAnchor.constraint(equalToConstant: 50),
+            homeButton.heightAnchor.constraint(equalToConstant: 50),
             
             musicButton.topAnchor.constraint(equalTo: iconView.topAnchor, constant: 20),
             musicButton.leadingAnchor.constraint(equalTo: homeButton.trailingAnchor, constant: 50),
-            musicButton.widthAnchor.constraint(equalToConstant: 30),
-            musicButton.heightAnchor.constraint(equalToConstant: 30),
+            musicButton.widthAnchor.constraint(equalToConstant:50),
+            musicButton.heightAnchor.constraint(equalToConstant: 50),
             
             heartButton.topAnchor.constraint(equalTo: iconView.topAnchor, constant: 20),
             heartButton.leadingAnchor.constraint(equalTo: musicButton.trailingAnchor, constant: 50),
-            heartButton.widthAnchor.constraint(equalToConstant: 30),
-            heartButton.heightAnchor.constraint(equalToConstant: 30)
+            heartButton.widthAnchor.constraint(equalToConstant: 50),
+            heartButton.heightAnchor.constraint(equalToConstant: 50)
         ])
         
-        pressButton.frame = CGRect(x: 170, y: 600, width: 50, height: 50)
+        homeButton.tintColor = .white
+        musicButton.tintColor = .white
+        heartButton.tintColor = .white
+        
         NSLayoutConstraint.activate([
-            pressButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 613),
-            pressButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 60),
+            pressButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 600),
+            pressButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 170),
             pressButton.widthAnchor.constraint(equalToConstant: 50),
             pressButton.heightAnchor.constraint(equalToConstant: 50)
+        ])
+        
+        
+        NSLayoutConstraint.activate([
+            backwardButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 610),
+            backwardButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 120),
+            backwardButton.widthAnchor.constraint(equalToConstant: 30),
+            backwardButton.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            forwardButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 610),
+            forwardButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 240),
+            forwardButton.widthAnchor.constraint(equalToConstant: 30),
+            forwardButton.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            shuffleButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 610),
+            shuffleButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 80),
+            shuffleButton.widthAnchor.constraint(equalToConstant: 30),
+            shuffleButton.heightAnchor.constraint(equalToConstant: 30)
+        ])
+        
+        NSLayoutConstraint.activate([
+            repeatButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 610),
+            repeatButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 280),
+            repeatButton.widthAnchor.constraint(equalToConstant: 30),
+            repeatButton.heightAnchor.constraint(equalToConstant: 30)
         ])
         
         pressButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
     }
 
     @objc private func didTapButton() {
+        
+        pressButton.isSelected.toggle()
+        
+        if pressButton.isSelected {
+            pressButton.setBackgroundImage(UIImage(systemName: "play.circle"), for: .normal)
+        } else {
+            pressButton.setBackgroundImage(UIImage(systemName: "pause.circle"), for: .normal)
+        }
+        
         for x in 0..<100 {
-            DispatchQueue.main.asyncAfter(deadline: .now()+(Double(x)*0.25)) {
-                self.progressView.setProgress(Float(x)/100, animated: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + (Double(x) * 0.25)) {
+                self.progressView.setProgress(Float(x) / 100, animated: true)
             }
         }
     }
 
-    
     func createButton(imageName: String, action: Selector) -> UIButton {
-            let button = UIButton(type: .custom)
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.setImage(UIImage(named: imageName), for: .normal)
-            button.addTarget(self, action: action, for: .touchUpInside)
-            return button
-        }
-        
+        let button = UIButton(type: .custom)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: imageName), for: .normal)
+        button.addTarget(self, action: action, for: .touchUpInside)
+        return button
+    }
+
         @objc func homeButtonTapped() {
             animateButton(button: homeButton)
-            
         }
         
         @objc func musicButtonTapped() {
             animateButton(button: musicButton)
-            
         }
         
         @objc func heartButtonTapped() {
             animateButton(button: heartButton)
-            
         }
         
         func animateButton(button: UIButton) {
@@ -220,11 +287,18 @@ class ViewController: UIViewController {
         }
     
     func setupProgressBar() {
-        progressView.frame = CGRect(x: 10, y: 580, width: view.frame.size.width-20, height: 20)
+        NSLayoutConstraint.activate([
+            progressView.topAnchor.constraint(equalTo: view.topAnchor, constant: 580),
+            progressView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
+            progressView.widthAnchor.constraint(equalToConstant: view.frame.size.width-20),
+            progressView.heightAnchor.constraint(equalToConstant: 5)
+        ])
+        
         progressView.setProgress(0, animated: false)
     }
     }
     
-    
+//MARK: - ჩემი კომენტარი
+// მოკლედ, რაღაცები არ გამოვიდა :( სურათის გადიდებას ვეწვალე მაგრამ არ იმუშავა, მაინც იგივე ზომის რჩებოდა. რაც გამოვიდა იქედან ერთი კითხვა მაქვს, progress bar-ში ეს ხაზი რომ ივსება, ეგ უფრო smooth-ად რომ მიდიოდეს რა უნდა ჩამემატებინა?🥹 და ასევე, ვიუ მოდელში რა უნდა გამეტანა აქედან ცოტა ავირიე...
         
         
